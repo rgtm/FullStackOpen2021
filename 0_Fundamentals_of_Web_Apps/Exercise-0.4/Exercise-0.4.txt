@@ -1,0 +1,58 @@
+title FullStackOpen 2021 - Ex 0.4
+
+note over browser:
+user enters note into input box
+and clicks 'Save'
+end note  
+
+note over browser:
+browser sends HTTP POST 
+request to /new_note on server. 
+The user's note is contained
+within the body of the request
+end note  
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+
+note over server:
+Server takes user's note and adds
+it to interal array of notes, then
+returns status code 302 to browser
+end note
+
+server-->browser: URL redirect (Status code 302) to /notes
+
+note over browser:
+Server has redirected browser
+to reload the page. Browser sends
+GET request to /notes
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code for /notes page
+
+note over browser:
+Browser processes HTML code
+and requests CSS and JS files
+from the server
+end note  
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display.
+The user's new note is included!
+end note
+
